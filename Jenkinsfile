@@ -81,13 +81,13 @@ pipeline {
         stage('Package') {
             when { branch 'main' }
             steps {
-                sh '/opt/node-12/bin/npm install'
+                sh 'npm install'
             }
         }
         stage('Docker Build') {
             when { branch 'main' }
             steps {
-                sh '/opt/node-12/bin/ng build'
+                sh 'ng build'
                 sh 'docker build -t employee:${BUILD_NUMBER} .'
             }
         }

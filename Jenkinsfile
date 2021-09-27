@@ -32,6 +32,7 @@ pipeline {
         }
         
         stage('Deploy to Dev') {
+            when { branch 'dev' }
             steps {
                sh 'docker rm -f employee-dev || true'
                sh 'docker run -d --name employee-dev -p 7011:80 employee-dev:${BUILD_NUMBER}'

@@ -19,14 +19,14 @@ pipeline {
         stage('Package - Dev') {
             when { branch 'dev' }
             steps {
-                sh 'npm install'
+                sh '/opt/node-12/bin/npm install'
             }
         }
         
         stage('Docker Build - Dev') {
             when { branch 'dev' }
             steps {
-                sh 'ng build'
+                sh '/opt/node-12/bin/ng build'
                 sh 'docker build -t employee-dev:${BUILD_NUMBER} .'
             }
         }
@@ -52,13 +52,13 @@ pipeline {
         stage('QA Package') {
             when { branch 'qa' }
             steps {
-                sh 'npm install'
+                sh '/opt/node-12/bin/npm install'
             }
         }
         stage('Docker Build - QA') {
             when { branch 'qa' }
             steps {
-                sh 'ng build'
+                sh '/opt/node-12/bin/ng build'
                 sh 'docker build -t employee-qa:${BUILD_NUMBER} .'
             }
         }
@@ -81,13 +81,13 @@ pipeline {
         stage('Package') {
             when { branch 'main' }
             steps {
-                sh 'npm install'
+                sh '/opt/node-12/bin/npm install'
             }
         }
         stage('Docker Build') {
             when { branch 'main' }
             steps {
-                sh 'ng build'
+                sh '/opt/node-12/bin/ng build'
                 sh 'docker build -t employee:${BUILD_NUMBER} .'
             }
         }

@@ -16,14 +16,14 @@ pipeline {
             }
         }
         
-        stage('Package') {
+        stage('Package - Dev') {
             when { branch 'dev' }
             steps {
                 sh 'npm install'
             }
         }
         
-        stage('Docker Build') {
+        stage('Docker Build - Dev') {
             when { branch 'dev' }
             steps {
                 sh 'ng build'
